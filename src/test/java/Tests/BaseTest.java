@@ -18,7 +18,6 @@ import java.nio.file.Paths;
 import java.util.Calendar;
 import java.util.Properties;
 
-
 public class BaseTest {
 
     public WebDriver driver;
@@ -49,7 +48,7 @@ public class BaseTest {
     private void initBrowser(String browserName) {
         switch (browserName) {
             case "chrome":
-//        Issues with chromedriver 111 and WebDriverManager
+//        Issues with chromedriver 111 and WebDriverManager (newest version == 110)
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("start-maximized");

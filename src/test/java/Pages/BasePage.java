@@ -1,22 +1,15 @@
 package Pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
-import java.time.Duration;
-import java.util.List;
-import org.openqa.selenium.NoSuchElementException;
 
 public class BasePage {
 
     private static final int TIMEOUT = 10;
     public WebDriver driver;
 
-    public BasePage(WebDriver driver){
+    public BasePage(WebDriver driver) {
 
         this.driver = driver;
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIMEOUT), this);
