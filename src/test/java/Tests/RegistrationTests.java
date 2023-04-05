@@ -26,11 +26,7 @@ public class RegistrationTests extends BaseTest{
 
     @Test(dataProvider = "validUser", dataProviderClass = RegistrationData.class)
     public void createValidAccount(String firstName, String lastName, String email, String password) {
-        createAccountPage.enterFirstName(firstName + uniqueNameForTests);
-        createAccountPage.enterLastName(lastName + uniqueNameForTests);
-        createAccountPage.enterEmail(String.format(email, uniqueNameForTests));
-        createAccountPage.enterPassword(password);
-        createAccountPage.enterConfirmPassword(password);
+        createAccountPage.fillAccountData(firstName, lastName, email, password, uniqueNameForTests);
         createAccountPage.clickCreateAccountBtn();
 
         Assert.assertEquals(driver.getCurrentUrl(), PagesUrls.MyAccount);
@@ -65,11 +61,7 @@ public class RegistrationTests extends BaseTest{
 
     @Test(dataProvider = "invalidEmails", dataProviderClass = RegistrationData.class)
     public void invalidEmails(String firstName, String lastName, String email, String password){
-        createAccountPage.enterFirstName(firstName + uniqueNameForTests);
-        createAccountPage.enterLastName(lastName + uniqueNameForTests);
-        createAccountPage.enterEmail(String.format(email, uniqueNameForTests));
-        createAccountPage.enterPassword(password);
-        createAccountPage.enterConfirmPassword(password);
+        createAccountPage.fillAccountData(firstName, lastName, email, password, uniqueNameForTests);
         createAccountPage.clickCreateAccountBtn();
 
         HashMap<String, String> errorMessages = createAccountPage.getExpectedErrorMessages();
@@ -84,11 +76,7 @@ public class RegistrationTests extends BaseTest{
 
     @Test(dataProvider = "invalidPasswords", dataProviderClass = RegistrationData.class)
     public void invalidPasswords(String firstName, String lastName, String email, String password){
-        createAccountPage.enterFirstName(firstName + uniqueNameForTests);
-        createAccountPage.enterLastName(lastName + uniqueNameForTests);
-        createAccountPage.enterEmail(String.format(email, uniqueNameForTests));
-        createAccountPage.enterPassword(password);
-        createAccountPage.enterConfirmPassword(password);
+        createAccountPage.fillAccountData(firstName, lastName, email, password, uniqueNameForTests);
         createAccountPage.clickCreateAccountBtn();
 
         HashMap<String, String> errorMessages = createAccountPage.getExpectedErrorMessages();
@@ -114,10 +102,7 @@ public class RegistrationTests extends BaseTest{
 
     @Test(dataProvider = "validUser", dataProviderClass = RegistrationData.class)
     public void emptyFirstName(String firstName, String lastName, String email, String password) {
-        createAccountPage.enterLastName(lastName + uniqueNameForTests);
-        createAccountPage.enterEmail(String.format(email, uniqueNameForTests));
-        createAccountPage.enterPassword(password);
-        createAccountPage.enterConfirmPassword(password);
+        createAccountPage.fillAccountData("", lastName, email, password, uniqueNameForTests);
         createAccountPage.clickCreateAccountBtn();
 
         HashMap<String, String> errorMessages = createAccountPage.getExpectedErrorMessages();
@@ -131,10 +116,7 @@ public class RegistrationTests extends BaseTest{
 
     @Test(dataProvider = "validUser", dataProviderClass = RegistrationData.class)
     public void emptyLastName(String firstName, String lastName, String email, String password) {
-        createAccountPage.enterFirstName(firstName + uniqueNameForTests);
-        createAccountPage.enterEmail(String.format(email, uniqueNameForTests));
-        createAccountPage.enterPassword(password);
-        createAccountPage.enterConfirmPassword(password);
+        createAccountPage.fillAccountData(firstName, "", email, password, uniqueNameForTests);
         createAccountPage.clickCreateAccountBtn();
 
         HashMap<String, String> errorMessages = createAccountPage.getExpectedErrorMessages();
@@ -149,10 +131,7 @@ public class RegistrationTests extends BaseTest{
 
     @Test(dataProvider = "validUser", dataProviderClass = RegistrationData.class)
     public void emptyEmail(String firstName, String lastName, String email, String password) {
-        createAccountPage.enterFirstName(firstName + uniqueNameForTests);
-        createAccountPage.enterLastName(lastName + uniqueNameForTests);
-        createAccountPage.enterPassword(password);
-        createAccountPage.enterConfirmPassword(password);
+        createAccountPage.fillAccountData(firstName, lastName, "", password, uniqueNameForTests);
         createAccountPage.clickCreateAccountBtn();
 
         HashMap<String, String> errorMessages = createAccountPage.getExpectedErrorMessages();
@@ -167,10 +146,7 @@ public class RegistrationTests extends BaseTest{
 
     @Test(dataProvider = "validUser", dataProviderClass = RegistrationData.class)
     public void emptyPassword(String firstName, String lastName, String email, String password) {
-        createAccountPage.enterFirstName(firstName + uniqueNameForTests);
-        createAccountPage.enterLastName(lastName + uniqueNameForTests);
-        createAccountPage.enterEmail(String.format(email, uniqueNameForTests));
-        createAccountPage.enterConfirmPassword(password);
+        createAccountPage.fillAccountData(firstName, lastName, email, "", uniqueNameForTests);
         createAccountPage.clickCreateAccountBtn();
 
         HashMap<String, String> errorMessages = createAccountPage.getExpectedErrorMessages();

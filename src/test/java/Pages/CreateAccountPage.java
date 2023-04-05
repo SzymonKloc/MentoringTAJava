@@ -24,10 +24,6 @@ public class CreateAccountPage extends BasePage {
         put(String.valueOf(RegistrationErrorMsgKeys.missingConfirmPassword), "This is a required field.");
     }};
 
-
-    /*  Java doesn't support direct var -> func assigment (lazy locators), thus noSuchElement ex.
-    What's the proper way to create wrappers for finds with build in fluentWaits? @FindBy is the only way to go?
-    */
     @FindBy(id = "firstname")
     private WebElement inputFirstName;
     @FindBy(id = "lastname")
@@ -77,11 +73,6 @@ public class CreateAccountPage extends BasePage {
         inputConfirmPassword.sendKeys(confirmPassword);
     }
 
-    /*It takes a second for a script with required fields to load, how to handle it properly?
-    Wait for form elements to gain "required" attributes? DOM state is complete before scripts load.
-    This solution works, but seems deeply flawed as it waits for any change
-     */
-
     public void clickCreateAccountBtn() {
         boolean domHasChanged = WaitUntil.domHasChanged(driver, Duration.ofMillis(500), Duration.ofSeconds(5));
         if (domHasChanged) {
@@ -114,6 +105,14 @@ public class CreateAccountPage extends BasePage {
 
     public String getErrorConfirmPasswordText() {
         return errorConfirmPassword.getText();
+    }
+
+    public void fillAccountData(String firstName, String lastName, String email, String password, String uniqueNameForTests){
+        this.enterFirstName(firstName + uniqueNameForTests);
+        this.enterLastName(lastName + uniqueNameForTests);
+        this.enterEmail(String.format(email, uniqueNameForTests));
+        this.enterPassword(password);
+        this.enterConfirmPassword(password);
     }
 
 }
