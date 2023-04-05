@@ -18,7 +18,6 @@ public class RegistrationTests extends BaseTest{
 
     @BeforeMethod
     public void setupTest() throws IOException {
-//        What's the better way? Nunit/C# doesn't mind double setups
         super.setupTest();
         navigateToPage(PagesUrls.CreateAccount);
         createAccountPage = new CreateAccountPage(driver);
@@ -97,8 +96,6 @@ public class RegistrationTests extends BaseTest{
         }
         softAssert.assertAll();
     }
-
-//    Do I need these if I have test for all empty fields?
 
     @Test(dataProvider = "validUser", dataProviderClass = RegistrationData.class)
     public void emptyFirstName(String firstName, String lastName, String email, String password) {

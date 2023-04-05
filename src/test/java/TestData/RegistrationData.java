@@ -13,12 +13,12 @@ public class RegistrationData {
     @DataProvider(name = "invalidEmails")
     public static Object[][] invalidEmails() {
         return new Object[][]{
-                {"Johny", "Bravo", "automation{0}", "Qwerty123@"},
-                {"Johny", "Bravo", "automation{0}@gmail", "Qwerty123@"},
-                {"Johny", "Bravo", "automation{0}.@gmail", "Qwerty123@"},
-                {"Johny", "Bravo", "automation{0}@.gmail", "Qwerty123@"},
-                {"Johny", "Bravo", "automation{0}@gmail.c", "Qwerty123@"},
-                {"Johny", "Bravo", "@gmail.com", "Qwerty123@"}
+                {"Johnny", "Bravo", "automation{0}", "Qwerty123@"},
+                {"Johnny", "Bravo", "automation{0}@gmail", "Qwerty123@"},
+                {"Johnny", "Bravo", "automation{0}.@gmail", "Qwerty123@"},
+                {"Johnny", "Bravo", "automation{0}@.gmail", "Qwerty123@"},
+                {"Johnny", "Bravo", "automation{0}@gmail.c", "Qwerty123@"},
+                {"Johnny", "Bravo", "@gmail.com", "Qwerty123@"}
         };
     }
 
